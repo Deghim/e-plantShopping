@@ -6,6 +6,7 @@ import { addItem, removeItem, updateQuantity } from "./CartSlice";
 
 function ProductList({ onHomeClick }) {
   const [showCart, setShowCart] = useState(false);
+  const cartItems = useSelector((state) => state.cart.items);
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState({});
   const dispatch = useDispatch();
@@ -347,6 +348,7 @@ function ProductList({ onHomeClick }) {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
+                {cartItems.reduce((acc, cur) => acc + cur.quantity, 0)}
               </h1>
             </a>
           </div>
